@@ -16,11 +16,14 @@ export default {
 .news-item-title::before {
   counter-increment: news;
   content: counter(news) ". ";
+  color: #828282;
 }
 .news-item {
   font-size: 0.9em;
 }
 .news-item-details {
   font-size: 0.7em;
+  margin-left: 2em;
+  color: #828282;
 }
 </style>

@@ -1,0 +1,7 @@
+const types = {
+  SET_NEWS_ITEM: 'SET_NEWS_ITEM',
+  SET_CURRENT_NEWS_ITEM: 'SET_CURRENT_NEWS_ITEM',
+  SET_LOADING: 'SET_LOADING',
+  GET_NEWS_ITEM: 'GET_NEWS_ITEM',
+};
+export default types;

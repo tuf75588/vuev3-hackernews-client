@@ -4,7 +4,7 @@
       <h3>Loading..</h3>
     </div>
     <div>
-      <news-item v-for="item in items" :item="item" :key="item.id" />
+      <news-item v-for="item in newsItems" :item="item" :key="item.id" />
     </div>
   </div>
 </template>
@@ -13,27 +13,21 @@
 // @ is an alias to /src
 import { value, onCreated } from "vue-function-api";
 import NewsItem from "../components/NewsItem.vue";
-
+import { useState, useActions } from "@u3u/vue-hooks";
+import types from "../types";
 export default {
   components: {
     NewsItem
   },
   setup() {
-    const BASE_URL = "https://api.hackernews.io";
-    const items = value([]);
-    const loading = value(true);
-
-    onCreated(async () => {
-      const request = await fetch(BASE_URL + "/news?page=1");
-      const response = await request.json();
-      items.value = response;
-      loading.value = false;
-      console.log(response);
+    const { loading, newsItem } = useState(["loading", "newsItem"]);
+    const actions = useActions([types.GET_NEWS_ITEM]);
+    onCreated(() => {
+      actions.GET_NEWS_ITEM({
+        type: "news",
+        page: 1
+      });
     });
-    return {
-      items,
-      loading
-    };
   }
 };
 </script>

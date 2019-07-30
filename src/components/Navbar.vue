@@ -4,11 +4,11 @@
       <img src="https://news.ycombinator.com/y18.gif" alt="logo" class="logo" />
     </div>
     <p>Hacker News</p>
-    <router-link to="/">news</router-link>
-    <router-link to="/">newest</router-link>
-    <router-link to="/">show</router-link>
-    <router-link to="/">ask</router-link>
-    <router-link to="/">jobs</router-link>
+    <router-link to="/news">news</router-link>
+    <router-link to="/newest">newest</router-link>
+    <router-link to="/show">show</router-link>
+    <router-link to="/ask">ask</router-link>
+    <router-link to="/jobs">jobs</router-link>
   </div>
 </template>
 

@@ -12,20 +12,20 @@ export default new Vuex.Store({
     loading: false,
   },
   mutations: {
-    [types.SET_NEWS_ITEM](state, newsItems) {
+    [types.SET_NEWS_ITEMS](state, newsItems) {
       state.newsItems = newsItems;
     },
     [types.SET_CURRENT_NEWS_ITEM](state, newsItem) {
-      state.setCurrentNewsItem = newsItem;
+      state.currentNewsItem = newsItem;
     },
     [types.SET_LOADING](state, loading) {
       state.loading = loading;
     },
     [types.APPEND_NEWS_ITEMS](state, newsItems) {
-      const unique = {};
+      const uniqueIds = {};
       state.newsItems = state.newsItems.concat(newsItems).filter((item) => {
-        if (!unique[item.id]) {
-          unique[item.id] = true;
+        if (!uniqueIds[item.id]) {
+          uniqueIds[item.id] = true;
           return true;
         }
         return false;
@@ -33,21 +33,30 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async [types.GET_NEWS_ITEM]({ commit }, { type, page = 1 }) {
+    async [types.GET_NEWS_ITEMS]({ commit }, { type, page = 1 }) {
       commit(types.SET_LOADING, true);
       if (page === 1) {
-        commit(types.SET_NEWS_ITEM, []);
+        commit(types.SET_NEWS_ITEMS, []);
       }
-      const request = await fetch(`${BASE_URL}/${type}?page=${page}`);
-      const items = await request.json();
+      const response = await fetch(`${BASE_URL}/${type}?page=${page}`);
+      const items = await response.json();
       setTimeout(() => {
         if (page === 1) {
-          commit(types.SET_NEWS_ITEM, items);
+          commit(types.SET_NEWS_ITEMS, items);
         } else {
           commit(types.APPEND_NEWS_ITEMS, items);
         }
         commit(types.SET_LOADING, false);
-      }, 2000);
+      }, 1000);
+    },
+    async [types.GET_NEWS_ITEM]({ commit }, id) {
+      commit(types.SET_LOADING, true);
+      const response = await fetch(`${BASE_URL}/item/${id}`);
+      const item = await response.json();
+      setTimeout(() => {
+        commit(types.SET_CURRENT_NEWS_ITEM, item);
+        commit(types.SET_LOADING, false);
+      }, 1000);
     },
   },
 });

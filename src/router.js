@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import NewsItem from './components/NewsItem.vue';
+import NewsItemView from './views/NewsItemView.vue';
 
 Vue.use(Router);
 
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/item/:id',
       name: 'news-item',
-      component: NewsItem,
+      component: NewsItemView,
     },
     {
       path: '/:type',

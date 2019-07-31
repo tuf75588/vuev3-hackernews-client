@@ -1,9 +1,17 @@
 <template>
   <div class="news-item">
     <p class="news-item-title">{{item.title}}</p>
-    <p
-      class="news-item-details"
-    >{{item.points}} points by {{item.user}} {{item.time_ago}} | hide | {{item.comments_count}} comments</p>
+    <p class="news-item-details">
+      {{item.points}} points by {{item.user}} {{item.time_ago}} |
+      <router-link
+        :to="{
+          name: 'news-item',
+          params: {
+            id: item.id,
+          }
+        }"
+      >{{item.comments_count}} comments</router-link>
+    </p>
   </div>
 </template>
 <script>

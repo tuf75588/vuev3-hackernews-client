@@ -30,7 +30,7 @@ export default {
     const { route } = useRouter();
     console.log(route);
     const { loading, newsItems } = useState(["loading", "newsItems"]);
-    const actions = useActions([types.GET_NEWS_ITEM]);
+    const actions = useActions([types.GET_NEWS_ITEMS]);
     const currentPage = value(1);
 
     watch(
@@ -45,7 +45,7 @@ export default {
 
     function setCurrentType(type) {
       currentPage.value = 1;
-      actions.GET_NEWS_ITEM({
+      actions.GET_NEWS_ITEMS({
         type,
         page: currentPage.value
       });
@@ -54,7 +54,7 @@ export default {
     function loadMore() {
       console.log("loading more stories!");
       currentPage.value += 1;
-      actions.GET_NEWS_ITEM({
+      actions.GET_NEWS_ITEMS({
         type: route.value.params.type,
         page: currentPage.value
       });

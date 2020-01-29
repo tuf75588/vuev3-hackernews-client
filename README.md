@@ -1,29 +1,15 @@
-# hackernews-clone-v3
+# Hackernews Vue.js v3 Composition API
 
-## Project setup
-```
-yarn install
-```
+This front end application uses a community created Hacker News REST endpoint to display current Hackernews data including new posts, job postings, ask hackernews, and the current most trending posts.  The main motivation for this application was to utilize potential new features coming in the next major update to Vue.js, including the new composition API allowing for a more declaritive method of defining and using visual components in your application. 
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## Software used
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+* Vue.js
+* Vuex
+* Vue-Router
+* Experimental vue-composition-api
+* Babel
 
-### Run your tests
-```
-yarn run test
-```
 
-### Lints and fixes files
-```
-yarn run lint
-```
 
-### Live demo
-[Vue Hacker News](https://vue-hacker-news.netlify.com)
+You can view a live deployment of this application [here](https://vue-hacker-news.netlify.com/#/news)
